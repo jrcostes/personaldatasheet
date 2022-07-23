@@ -471,9 +471,7 @@
             {{Form::text('scholarshipgrad',null,array('class' => 'form-control', 'id' => 'scholargrad', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
         </div>
     </div>
-
-
-    {{Form::submit('NEXT PAGE')}}
+    {{Form::submit()}}
     {{Form::close()}}
 </body>
 </html>
