@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
         <!-- Styles -->
         <style>
@@ -17,7 +18,8 @@
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
-                margin: 0;
+                margin: 20px 50px 20px 80px ;
+
             }
 
             .full-height {
@@ -41,16 +43,27 @@
             }
 
             .content{
-                display: flex;
+                /* display: flex; */
+                text-align: center;
             }
             .personalInformation {
                 text-align: center;
                 display: flex;
                 flex-direction: row;
+                padding-top: 25px;
+                padding-left: 60px;
             }
-            /* .card1{
-                display: flex-box;
-            } */
+            .card1{
+                padding-left: 20px;
+            }
+            .card2{
+
+                padding-left: 30px;
+            }
+            .card3{
+                padding-top: 45px;
+                padding-left: 30px;
+            }
 
             .title {
                 font-size: 84px;
