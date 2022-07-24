@@ -11,6 +11,18 @@
 |
 */
 
+use Illuminate\Support\Facades\App;
+use Knp\Snappy\Pdf;
+
+Route::resource('posts','PostController');
+
 Route::get('/', function () {
+
     return view('c1data.index');
 });
+Route::get('/sender', function(){
+    $pdf = App::make('snappy.pdf.wrapper');
+    $pdf->loadview('c1data.index');
+    return $pdf->inline();
+});
+

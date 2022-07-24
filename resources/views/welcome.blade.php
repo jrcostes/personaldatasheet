@@ -24,11 +24,11 @@
                 height: 100vh;
             }
 
-            .flex-center {
+            /* .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
-            }
+            } */
 
             .position-ref {
                 position: relative;
@@ -40,9 +40,17 @@
                 top: 18px;
             }
 
-            .content {
-                text-align: center;
+            .content{
+                display: flex;
             }
+            .personalInformation {
+                text-align: center;
+                display: flex;
+                flex-direction: row;
+            }
+            /* .card1{
+                display: flex-box;
+            } */
 
             .title {
                 font-size: 84px;

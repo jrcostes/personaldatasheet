@@ -1,9 +1,10 @@
 @extends('welcome')
 
 @section('content')
- <h1>index</h1>
+
  <?php
     $countries = array(
+    "" => "",
     "AF" => "Afghanistan",
     "AX" => "Aland Islands",
     "AL" => "Albania",
@@ -262,11 +263,11 @@
 <head>
 
 </head>
-<body>
-    {{Form::open(['method' => 'get'])}}
+<body class="content">
+    <form action="/sender">
     <div class="personalInformation">
-        <h2 id="personal">I. Personal Information</h2>
         <div class="card1">
+            <h2 id="personal">I. Personal Information</h2>
             {{-- Form for name --}}
             {{Form::label('surname','SURNAME')}}
             {{Form::text('surname')}}<br>
@@ -320,6 +321,8 @@
             {{Form::number('agencyemp')}}<br>
 
         </div>
+    </div>
+    <div c;ass="additionalInfo">
         <div class="card3">
             {{-- 3rd card for c1 form --}}
             {{Form::label('citizenship','CITIZENSHIP')}}
@@ -471,7 +474,8 @@
             {{Form::text('scholarshipgrad',null,array('class' => 'form-control', 'id' => 'scholargrad', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
         </div>
     </div>
-    {{Form::submit()}}
+    <button href='/sender'>button</button>
     {{Form::close()}}
+
 </body>
 </html>
