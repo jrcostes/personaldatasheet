@@ -15,7 +15,9 @@
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "5.7"
+        "laravelcollective/html": "5.7",
+        "maatwebsite/excel": "^3.1",
+        "phpoffice/phpspreadsheet": "^1.24"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

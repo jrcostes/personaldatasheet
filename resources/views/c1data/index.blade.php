@@ -267,8 +267,8 @@
         <h2 id="personal">I. Personal Information</h2>
     </div>
     <body class="content">
-        <form action="/sender">
-
+        <form method="post" action="{{ route('post.store', '/sender') }}" autocomplete="off" class="form-horizontal">
+            @csrf
         <div class="personalInformation">
             <div class="card1">
                 {{-- Form for name --}}
@@ -301,7 +301,7 @@
                 {{Form::number('weight', '', array('required' => 'required'))}}<br>
 
                 {{Form::label('bloodType','BLOODTYPE')}}
-                {{Form::text('placeofBirth', '', array('required' => 'required'))}}
+                {{Form::text('bloodType', '', array('required' => 'required'))}}
             </div>
             <div class="card2">
                 {{-- Form for government id's --}}
@@ -347,13 +347,13 @@
 
                 {{-- residential address --}}
                 <b>{{Form::label('residential-address', 'Residential Address')}}<br></b>
-                {{Form::text('resitdential-house', null, array('class' => 'form-control','id' => 'houseno-R','placeholder' => 'House/Block/Lot No.', 'reqiured'=>'required')) }}
-                {{Form::text('resitdential-st', null, array('class' => 'form-control','id' => 'street-R','placeholder' => 'Street', 'reqiured'=>'required')) }}
-                {{Form::text('resitdential-sudv', null, array('class' => 'form-control','id' => 'subdivillage-R','placeholder' => 'Subdivision/Village', 'reqiured'=>'required')) }} <br>
-                {{Form::text('resitdential-brgy', null, array('class' => 'form-control','id' => 'barangay-R','placeholder' => 'Barangay', 'reqiured'=>'required')) }}
-                {{Form::text('resitdential-city', null, array('class' => 'form-control','id' => 'City/Municipality-R','placeholder' => 'City/Municipality', 'reqiured'=>'required')) }}
-                {{Form::text('resitdential-prv', null, array('class' => 'form-control','id' => 'province-R','placeholder' => 'Province', 'reqiured'=>'required')) }}<br>
-                {{Form::number('resitdential-zip', null, array('class' => 'form-control','id' => 'zipcode-R','placeholder' => 'Zip Code', 'reqiured'=>'required')) }}<BR>
+                {{Form::text('residential-house', null, array('class' => 'form-control','id' => 'houseno-R','placeholder' => 'House/Block/Lot No.', 'reqiured'=>'required')) }}
+                {{Form::text('residential-st', null, array('class' => 'form-control','id' => 'street-R','placeholder' => 'Street', 'reqiured'=>'required')) }}
+                {{Form::text('residential-sudv', null, array('class' => 'form-control','id' => 'subdivillage-R','placeholder' => 'Subdivision/Village', 'reqiured'=>'required')) }} <br>
+                {{Form::text('residential-brgy', null, array('class' => 'form-control','id' => 'barangay-R','placeholder' => 'Barangay', 'reqiured'=>'required')) }}
+                {{Form::text('residential-city', null, array('class' => 'form-control','id' => 'City/Municipality-R','placeholder' => 'City/Municipality', 'reqiured'=>'required')) }}
+                {{Form::text('residential-prv', null, array('class' => 'form-control','id' => 'province-R','placeholder' => 'Province', 'reqiured'=>'required')) }}<br>
+                {{Form::number('residential-zip', null, array('class' => 'form-control','id' => 'zipcode-R','placeholder' => 'Zip Code', 'reqiured'=>'required')) }}<BR>
 
                 <b>{{Form::label('permanent-address', 'Permanent Address')}}<br></b>
                 {{Form::text('permanent-house', null, array('class' => 'form-control','id' => 'houseno-P','placeholder' => 'House/Block/Lot No.', 'reqiured'=>'required')) }}
@@ -368,8 +368,8 @@
                 <b>
                 {{Form::label('contact', 'Contact Information')}}<br>
                 </b>
-                {{Form::tel('telno',null, array('class' => 'form-control', 'id' => 'tel',  'placeholder' => 'MOBILE NUMBER'))}}
-                {{Form::tel('mobno', null, array('class' => 'form-control', 'id' => 'mob', 'placeholder' => 'TELEPHONE NUMBER'))}}
+                {{Form::text('telno',null, array('class' => 'form-control', 'id' => 'tel',  'placeholder' => 'MOBILE NUMBER'))}}
+                {{Form::text('mobno', null, array('class' => 'form-control', 'id' => 'mob', 'placeholder' => 'TELEPHONE NUMBER'))}}
                 {{Form::email('email', null, array('class' => 'form-control', 'id' => 'email', 'placeholder' => 'EMAIL'))}}
 
                 <h2 id="family">II. Family Background</h2>
@@ -398,7 +398,7 @@
                 <b>{{Form::label('children', "Name of Children (List all names)")}}</b><br>
 
                 <?php
-                    $children = array("child0","child1","child2","child3","child4","child5","child6","child7","child8","child9");
+                    $children = array("child0","child1","child2","child3","child4");
                     foreach ($children as $childno) {
                         echo Form::text($childno, null, array('class'=> 'form-control','id'=>$childno, 'placeholder' => 'Full Name'));
 
@@ -419,6 +419,7 @@
                 <b>Pediod of Attendance</b><br>
                 {{Form::month('attendancefrom', null, array('class' => 'form-control', 'id' => 'elemattendFrom','placeholder' => 'FROM'))}}
                 {{Form::month('attendanceto', null, array('class' => 'form-control', 'id' => 'elemattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('elemunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
                 {{Form::text('yeargradelem',null,array('class' => 'form-control', 'id' => 'yearelem', 'placeholder' => 'Year Graduated'))}}<br>
                 {{Form::text('scholarshipelem',null,array('class' => 'form-control', 'id' => 'scholarelem', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
 
@@ -430,6 +431,7 @@
                 <b>Pediod of Attendance</b><br>
                 {{Form::month('attendancefromhs', null, array('class' => 'form-control', 'id' => 'hsattendFrom','placeholder' => 'FROM'))}}
                 {{Form::month('attendancetohs', null, array('class' => 'form-control', 'id' => 'hsattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('hsunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
                 {{Form::text('yeargradhs',null,array('class' => 'form-control', 'id' => 'yearhs', 'placeholder' => 'Year Graduated'))}}<br>
                 {{Form::text('scholarshiphs',null,array('class' => 'form-control', 'id' => 'scholarhs', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
 
@@ -441,6 +443,7 @@
                 <b>Pediod of Attendance</b><br>
                 {{Form::month('attendancefromvoc', null, array('class' => 'form-control', 'id' => 'vocattendFrom','placeholder' => 'FROM'))}}
                 {{Form::month('attendancetovoc', null, array('class' => 'form-control', 'id' => 'vocattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('vocunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
                 {{Form::text('yeargradvoc',null,array('class' => 'form-control', 'id' => 'yearvoc', 'placeholder' => 'Year Graduated'))}}<br>
                 {{Form::text('scholarshipvoc',null,array('class' => 'form-control', 'id' => 'scholarvoc', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
 
@@ -452,6 +455,7 @@
                 <b>Pediod of Attendance</b><br>
                 {{Form::month('attendancefromcol', null, array('class' => 'form-control', 'id' => 'colattendFrom','placeholder' => 'FROM'))}}
                 {{Form::month('attendancetocol', null, array('class' => 'form-control', 'id' => 'colattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('colunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
                 {{Form::text('yeargradcol',null,array('class' => 'form-control', 'id' => 'yearcol', 'placeholder' => 'Year Graduated'))}}<br>
                 {{Form::text('scholarshipcol',null,array('class' => 'form-control', 'id' => 'scholarcol', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
 
@@ -463,11 +467,17 @@
                 <b>Pediod of Attendance</b><br>
                 {{Form::month('attendancefromgrad', null, array('class' => 'form-control', 'id' => 'gradattendFrom','placeholder' => 'FROM'))}}
                 {{Form::month('attendancetograd', null, array('class' => 'form-control', 'id' => 'gradattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('gradunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
                 {{Form::text('yeargradgrad',null,array('class' => 'form-control', 'id' => 'yeargrad', 'placeholder' => 'Year Graduated'))}}<br>
                 {{Form::text('scholarshipgrad',null,array('class' => 'form-control', 'id' => 'scholargrad', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
             </div>
         </div>
-        <button href='/sender'>PRINT PAGE</button>
+        <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+
         {{Form::close()}}
+        <a href='sender' class="btn btn-primary">PDF</a>
+        <a href="exporter" class="btn btn-warning">Export</a>
+
+
 </body>
 </html>
