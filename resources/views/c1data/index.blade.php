@@ -267,7 +267,7 @@
         <h2 id="personal">I. Personal Information</h2>
     </div>
     <body class="content">
-        <form method="post" action="{{ route('post.store', '/sender') }}" autocomplete="off" class="form-horizontal">
+        <form method="post" action="{{ route('post.store') }}" autocomplete="off" class="form-horizontal">
             @csrf
         <div class="personalInformation">
             <div class="card1">
@@ -476,7 +476,7 @@
 
         {{Form::close()}}
         <a href='sender' class="btn btn-primary">PDF</a>
-        <a href="exporter" class="btn btn-warning">Export</a>
+        <a href="exporter" class="btn btn-primary">Export</a>
 
 
 </body>
