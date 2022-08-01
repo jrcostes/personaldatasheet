@@ -1,9 +1,10 @@
 @extends('welcome')
 
-@section('content')
- <h1>index</h1>
- <?php
+
+
+<?php
     $countries = array(
+    "" => "",
     "AF" => "Afghanistan",
     "AX" => "Aland Islands",
     "AL" => "Albania",
@@ -257,223 +258,226 @@
     "ZM" => "Zambia",
     "ZW" => "Zimbabwe"
     )
-    ?>
+?>
 <html>
-<head>
+    <head>
 
-</head>
-<body>
-    {{Form::open(['method' => 'get'])}}
-    <div class="personalInformation">
+    </head>
+    <div class="head">
         <h2 id="personal">I. Personal Information</h2>
-        <div class="card1">
-            {{-- Form for name --}}
-            {{Form::label('surname','SURNAME')}}
-            {{Form::text('surname')}}<br>
-
-            {{Form::label('firstname','FIRST NAME')}}
-            {{Form::text('firstname')}}
-            {{Form::text('nameExt','name ext')}}<br>
-
-            {{Form::label('midname','MIDDLE NAME')}}
-            {{Form::text('midname')}} <br>
-
-            {{Form::label('birthdate','BIRTHDATE')}}
-            {{Form::date('birthdate')}}
-
-            {{Form::label('sex','SEX')}}
-            {{Form::select('sex', ['male' => 'MALE', 'female' => 'FEMALE'],null, ['placeholder' => ''])}}<br>
-
-            {{Form::label('placeofBirth','PLACE OF BIRTH')}}
-            {{Form::text('placeofBirth')}} <br>
-
-            {{Form::label('civilStatus','CIVIL STATUS')}}
-            {{Form::select('sex', ['single' => 'SINGLE', 'widowed' => 'Widowed', 'married' => 'Married', 'separated' => 'Separated', 'others' => 'Other/s'],null, ['placeholder' => ''])}}<br>
-
-            {{Form::label('height','HEIGHT')}}
-            {{Form::number('height')}}
-
-            {{Form::label('weight','WEIGHT')}}
-            {{Form::number('weight')}}<br>
-
-            {{Form::label('bloodType','BLOODTYPE')}}
-            {{Form::text('placeofBirth')}}
-        </div>
-        <div class="card2">
-            {{-- Form for government id's --}}
-            {{Form::label('gsisno','GSIS No.')}}
-            {{Form::number('gsisno')}}<br>
-
-            {{Form::label('pagibigno','PAG-IBIG No.')}}
-            {{Form::number('pagibigno')}}<br>
-
-            {{Form::label('philhealthno','PHILHEALTH No.')}}
-            {{Form::number('philhealthno')}}<br>
-
-            {{Form::label('sssno','PAG-IBIG No.')}}
-            {{Form::number('sssno')}}<br>
-
-            {{Form::label('tinno','TIN No.')}}
-            {{Form::number('tinno')}}<br>
-
-            {{Form::label('agencyemp','AGENCY EMPLOYEE No.')}}
-            {{Form::number('agencyemp')}}<br>
-
-        </div>
-        <div class="card3">
-            {{-- 3rd card for c1 form --}}
-            {{Form::label('citizenship','CITIZENSHIP')}}
-
-            {{Form::radio('citizens', 'Filipino')}}
-            {{Form::label('citizens','FILIPINO')}}
-
-            {{Form::radio('citizens', 'Dual Citizenship') }}
-            {{Form::label('citizens','DUAL CITIZENSHIP')}}<br>
-
-            {{Form::radio('citizens', 'By Birth') }}
-            {{Form::label('citizens','BY BIRTH')}}
-
-            {{Form::radio('citizens', 'By Naturalization') }}
-            {{Form::label('citizens','BY NATURALIZATION')}}<Br>
-
-            {{Form::label('Pls. indicate country')}}
-            {{Form::select('country',  $countries, null, ['class' => 'form-control', 'placeholder' => 'Select Country...'])}}<br>
-
-            {{-- residential address --}}
-            <b>{{Form::label('residential-address', 'Residential Address')}}<br></b>
-            {{Form::text('resitdential-house', null, array('class' => 'form-control','id' => 'houseno-R','placeholder' => 'House/Block/Lot No.')) }}
-            {{Form::text('resitdential-st', null, array('class' => 'form-control','id' => 'street-R','placeholder' => 'Street')) }}
-            {{Form::text('resitdential-sudv', null, array('class' => 'form-control','id' => 'subdivillage-R','placeholder' => 'Subdivision/Village')) }} <br>
-            {{Form::text('resitdential-brgy', null, array('class' => 'form-control','id' => 'barangay-R','placeholder' => 'Barangay')) }}
-            {{Form::text('resitdential-city', null, array('class' => 'form-control','id' => 'City/Municipality-R','placeholder' => 'City/Municipality')) }}
-            {{Form::text('resitdential-prv', null, array('class' => 'form-control','id' => 'province-R','placeholder' => 'Province')) }}<br>
-            {{Form::number('resitdential-zip', null, array('class' => 'form-control','id' => 'zipcode-R','placeholder' => 'Zip Code')) }}<BR>
-
-            <b>{{Form::label('permanent-address', 'Permanent Address')}}<br></b>
-            {{Form::text('permanent-house', null, array('class' => 'form-control','id' => 'houseno-P','placeholder' => 'House/Block/Lot No.')) }}
-            {{Form::text('permanent-st', null, array('class' => 'form-control','id' => 'street-P','placeholder' => 'Street')) }}
-            {{Form::text('permanent-subdv', null, array('class' => 'form-control','id' => 'subdivillage-P','placeholder' => 'Subdivision/Village')) }} <br>
-            {{Form::text('permanent-brgy', null, array('class' => 'form-control','id' => 'barangay-P','placeholder' => 'Barangay')) }}
-            {{Form::text('permanent-city', null, array('class' => 'form-control','id' => 'City/Municipality-P','placeholder' => 'City/Municipality')) }}
-            {{Form::text('permanent-prv', null, array('class' => 'form-control','id' => 'province-P','placeholder' => 'Province')) }}<br>
-            {{Form::number('permanent-zip', null, array('class' => 'form-control','id' => 'zipcode-P','placeholder' => 'Zip Code')) }}<br>
-
-            {{-- contact information --}}
-            <b>{{Form::label('telno','Tel No.')}}
-            {{Form::label('mobno', 'Mobile No.')}}
-            {{Form::label('email', 'E-mail Address')}}<br>
-            </b>
-            {{Form::text('telno')}}
-            {{Form::text('mobno')}}
-            {{Form::email('email')}}
-
-            <h2 id="family">II. Family Background</h2>
-            <b>{{Form::label('spouse', "Spouse's Name")}}</b><br>
-            {{Form::text('spousesn',null, array('class'=>'form-control', 'id' => 'surname-S','placeholder' => 'Surname'))}}
-            {{Form::text('spousefn',null, array('class'=>'form-control', 'id' => 'firstname-S','placeholder' => 'First Name'))}}
-            {{Form::text('spousemn',null, array('class'=>'form-control', 'id' => 'midname-S','placeholder' => 'Middle Name'))}}
-            {{Form::text('spousenmext',null, array('class'=>'form-control', 'id' => 'namext-S','placeholder' => 'Ext.'))}}<br>
-            {{Form::text('spouseocc',null, array('class'=>'form-control', 'id' => 'occupation-S','placeholder' => 'Occupation'))}}
-            {{Form::text('spouseemp',null, array('class'=>'form-control', 'id' => 'employ-S','placeholder' => 'Employer/Business Name'))}}
-            {{Form::text('spouseempadd',null, array('class'=>'form-control', 'id' => 'employadd-S','placeholder' => 'Business Address'))}}
-            {{Form::text('spousetel',null, array('class'=>'form-control', 'id' => 'telno-S','placeholder' => 'Tel. No'))}}<br>
-
-            <b>{{Form::label('father', "Father's Name")}}</b><br>
-            {{Form::text('fathersn',null, array('class'=>'form-control', 'id' => 'surname-F','placeholder' => 'Surname'))}}
-            {{Form::text('fatherfn',null, array('class'=>'form-control', 'id' => 'firstname-F','placeholder' => 'First Name'))}}
-            {{Form::text('fathermn',null, array('class'=>'form-control', 'id' => 'midname-F','placeholder' => 'Middle Name'))}}
-            {{Form::text('fatherext',null, array('class'=>'form-control', 'id' => 'namext-F','placeholder' => 'Ext.'))}}<br>
-
-            <b>{{Form::label('mother', "Mother's Name")}}</b><br>
-            {{Form::text('mothernm',null, array('class'=>'form-control', 'id' => 'surname-M','placeholder' => 'Surname'))}}
-            {{Form::text('motherfn',null, array('class'=>'form-control', 'id' => 'firstname-M','placeholder' => 'First Name'))}}
-            {{Form::text('mothermn',null, array('class'=>'form-control', 'id' => 'midname-M','placeholder' => 'Middle Name'))}}
-            {{Form::text('motherext',null, array('class'=>'form-control', 'id' => 'namext-M','placeholder' => 'Ext.'))}}<br>
-
-            <b>{{Form::label('children', "Name of Children (List all names)")}}</b><br>
-
-           <?php
-                $children = array("child0","child1","child2","child3","child4","child5","child6","child7","child8","child9");
-                foreach ($children as $childno) {
-                 echo Form::text($childno, null, array('class'=> 'form-control','id'=>$childno, 'placeholder' => 'Full Name'));
-
-                $str = "birth";
-                $str .=$childno;
-                 echo Form::date($str);
-                 echo "<br>";
-                }
-           ?>
-
-            <h2 id='education'>III. Educational Background</h2>
-            <b>Level</b><br>
-            <b>{{Form::label('elem', 'Elementary')}}</b><br>
-            {{Form::text('elemname', null, array('class'=>'form-control','id' => 'elemname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
-            {{Form::text('elemdeg', null, array('class' => 'form-control', 'id' => 'elemdegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
-
-            <b>Pediod of Attendance</b><br>
-            <b>{{Form::label('attendancefrom', 'FROM')}}</b>
-            <b>{{Form::label('attendanceto', 'TO')}}</b><br>
-            {{Form::text('attendancefrom', null, array('class' => 'form-control', 'id' => 'elemattendFrom','placeholder' => 'Year'))}}
-            {{Form::text('attendanceto', null, array('class' => 'form-control', 'id' => 'elemattendto','placeholder' => 'Year'))}}<br>
-            {{Form::text('yeargradelem',null,array('class' => 'form-control', 'id' => 'yearelem', 'placeholder' => 'Year Graduated'))}}<br>
-            {{Form::text('scholarshipelem',null,array('class' => 'form-control', 'id' => 'scholarelem', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
-
-            <b>Level</b><br>
-            <b>{{Form::label('hs', 'Secondary')}}</b><br>
-            {{Form::text('hsname', null, array('class'=>'form-control','id' => 'hsname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
-            {{Form::text('hsdeg', null, array('class' => 'form-control', 'id' => 'hsdegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
-
-            <b>Pediod of Attendance</b><br>
-            <b>{{Form::label('attendancefrom', 'FROM')}}</b>
-            <b>{{Form::label('attendanceto', 'TO')}}</b><br>
-            {{Form::text('attendancefromhs', null, array('class' => 'form-control', 'id' => 'hsattendFrom','placeholder' => 'Year'))}}
-            {{Form::text('attendancetohs', null, array('class' => 'form-control', 'id' => 'hsattendto','placeholder' => 'Year'))}}<br>
-            {{Form::text('yeargradhs',null,array('class' => 'form-control', 'id' => 'yearhs', 'placeholder' => 'Year Graduated'))}}<br>
-            {{Form::text('scholarshiphs',null,array('class' => 'form-control', 'id' => 'scholarhs', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
-
-            <b>Level</b><br>
-            <b>{{Form::label('voc', 'Vocational / Trade Course')}}</b><br>
-            {{Form::text('vocname', null, array('class'=>'form-control','id' => 'vocname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
-            {{Form::text('vocdeg', null, array('class' => 'form-control', 'id' => 'vocdegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
-
-            <b>Pediod of Attendance</b><br>
-            <b>{{Form::label('attendancefrom', 'FROM')}}</b>
-            <b>{{Form::label('attendanceto', 'TO')}}</b><br>
-            {{Form::text('attendancefromvoc', null, array('class' => 'form-control', 'id' => 'vocattendFrom','placeholder' => 'Year'))}}
-            {{Form::text('attendancetovoc', null, array('class' => 'form-control', 'id' => 'vocattendto','placeholder' => 'Year'))}}<br>
-            {{Form::text('yeargradvoc',null,array('class' => 'form-control', 'id' => 'yearvoc', 'placeholder' => 'Year Graduated'))}}<br>
-            {{Form::text('scholarshipvoc',null,array('class' => 'form-control', 'id' => 'scholarvoc', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
-
-            <b>Level</b><br>
-            <b>{{Form::label('col', 'College')}}</b><br>
-            {{Form::text('colname', null, array('class'=>'form-control','id' => 'colname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
-            {{Form::text('coldeg', null, array('class' => 'form-control', 'id' => 'coldegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
-
-            <b>Pediod of Attendance</b><br>
-            <b>{{Form::label('attendancefrom', 'FROM')}}</b>
-            <b>{{Form::label('attendanceto', 'TO')}}</b><br>
-            {{Form::text('attendancefromcol', null, array('class' => 'form-control', 'id' => 'colattendFrom','placeholder' => 'Year'))}}
-            {{Form::text('attendancetocol', null, array('class' => 'form-control', 'id' => 'colattendto','placeholder' => 'Year'))}}<br>
-            {{Form::text('yeargradcol',null,array('class' => 'form-control', 'id' => 'yearcol', 'placeholder' => 'Year Graduated'))}}<br>
-            {{Form::text('scholarshipcol',null,array('class' => 'form-control', 'id' => 'scholarcol', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
-
-            <b>Level</b><br>
-            <b>{{Form::label('grad', 'Graduate Studies')}}</b><br>
-            {{Form::text('gradname', null, array('class'=>'form-control','id' => 'gradname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
-            {{Form::text('graddeg', null, array('class' => 'form-control', 'id' => 'graddegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
-
-            <b>Pediod of Attendance</b><br>
-            <b>{{Form::label('attendancefrom', 'FROM')}}</b>
-            <b>{{Form::label('attendanceto', 'TO')}}</b><br>
-            {{Form::text('attendancefromgrad', null, array('class' => 'form-control', 'id' => 'gradattendFrom','placeholder' => 'Year'))}}
-            {{Form::text('attendancetograd', null, array('class' => 'form-control', 'id' => 'gradattendto','placeholder' => 'Year'))}}<br>
-            {{Form::text('yeargradgrad',null,array('class' => 'form-control', 'id' => 'yeargrad', 'placeholder' => 'Year Graduated'))}}<br>
-            {{Form::text('scholarshipgrad',null,array('class' => 'form-control', 'id' => 'scholargrad', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
-        </div>
     </div>
+    <body class="content">
+        <form method="post" action="{{ route('post.store') }}" autocomplete="off" class="form-horizontal">
+            @csrf
+        <div class="personalInformation">
+            <div class="card1">
+                {{-- Form for name --}}
+                {{Form::label('surname','SURNAME')}}
+                {{Form::text('surname', '', array('required' => 'required'))}}<br>
+
+                {{Form::label('firstname','FIRST NAME')}}
+                {{Form::text('firstname', '', array('required' => 'required'))}}
+                {{Form::text('firstnameext',null, array( 'id' => 'namext-M','placeholder' => 'Ext.'))}}<br>
+
+                {{Form::label('midname','MIDDLE NAME')}}
+                {{Form::text('midname', '', array('required' => 'required'))}} <br>
+
+                {{Form::label('birthdate','BIRTHDATE')}}
+                {{Form::date('birthdate', '', array('required' => 'required'))}}
+
+                {{Form::label('sex','SEX')}}
+                {{Form::select('sex', ['male' => 'MALE', 'female' => 'FEMALE'],null, ['placeholder' => ''])}}<br>
+
+                {{Form::label('placeofBirth','PLACE OF BIRTH')}}
+                {{Form::text('placeofBirth', '', array('required' => 'required'))}} <br>
+
+                {{Form::label('civilStatus','CIVIL STATUS')}}
+                {{Form::select('sex', ['single' => 'SINGLE', 'widowed' => 'Widowed', 'married' => 'Married', 'separated' => 'Separated', 'others' => 'Other/s'],null, ['placeholder' => ''])}}<br>
+
+                {{Form::label('height','HEIGHT')}}
+                {{Form::number('height', '', array('required' => 'required'))}}
+
+                {{Form::label('weight','WEIGHT')}}
+                {{Form::number('weight', '', array('required' => 'required'))}}<br>
+
+                {{Form::label('bloodType','BLOODTYPE')}}
+                {{Form::text('bloodType', '', array('required' => 'required'))}}
+            </div>
+            <div class="card2">
+                {{-- Form for government id's --}}
+                {{Form::label('gsisno','GSIS No.')}}
+                {{Form::number('gsisno')}}<br>
+
+                {{Form::label('pagibigno','PAG-IBIG No.')}}
+                {{Form::number('pagibigno')}}<br>
+
+                {{Form::label('philhealthno','PHILHEALTH No.')}}
+                {{Form::number('philhealthno')}}<br>
+
+                {{Form::label('sssno','PAG-IBIG No.')}}
+                {{Form::number('sssno')}}<br>
+
+                {{Form::label('tinno','TIN No.')}}
+                {{Form::number('tinno')}}<br>
+
+                {{Form::label('agencyemp','AGENCY EMPLOYEE No.')}}
+                {{Form::number('agencyemp')}}<br>
+
+            </div>
+        </div>
+        <div class="additionalInfo">
+            <div class="card3">
+                {{-- 3rd card for c1 form --}}
+                {{Form::label('citizenship','CITIZENSHIP')}}
+
+                {{Form::radio('citizens', 'Filipino' ,array('required' => 'required'))}}
+                {{Form::label('citizens','FILIPINO')}}
+
+                {{Form::radio('citizens', 'Dual Citizenship', array('required' => 'required')) }}
+                {{Form::label('citizens','DUAL CITIZENSHIP')}}<br>
+
+                {{Form::radio('citizens', 'By Birth', array('required' => 'required')) }}
+                {{Form::label('citizens','BY BIRTH')}}
+
+                {{Form::radio('citizens', 'By Naturalization', array('required' => 'required')) }}
+                {{Form::label('citizens','BY NATURALIZATION')}}<Br>
+
+                {{Form::label('Pls. indicate country')}}
+                {{Form::select('country',  $countries, null, ['class' => 'form-control', 'placeholder' => 'Select Country...'])}}<br>
+
+                {{-- residential address --}}
+                <b>{{Form::label('residential-address', 'Residential Address')}}<br></b>
+                {{Form::text('residential-house', null, array('class' => 'form-control','id' => 'houseno-R','placeholder' => 'House/Block/Lot No.', 'reqiured'=>'required')) }}
+                {{Form::text('residential-st', null, array('class' => 'form-control','id' => 'street-R','placeholder' => 'Street', 'reqiured'=>'required')) }}
+                {{Form::text('residential-sudv', null, array('class' => 'form-control','id' => 'subdivillage-R','placeholder' => 'Subdivision/Village', 'reqiured'=>'required')) }} <br>
+                {{Form::text('residential-brgy', null, array('class' => 'form-control','id' => 'barangay-R','placeholder' => 'Barangay', 'reqiured'=>'required')) }}
+                {{Form::text('residential-city', null, array('class' => 'form-control','id' => 'City/Municipality-R','placeholder' => 'City/Municipality', 'reqiured'=>'required')) }}
+                {{Form::text('residential-prv', null, array('class' => 'form-control','id' => 'province-R','placeholder' => 'Province', 'reqiured'=>'required')) }}<br>
+                {{Form::number('residential-zip', null, array('class' => 'form-control','id' => 'zipcode-R','placeholder' => 'Zip Code', 'reqiured'=>'required')) }}<BR>
+
+                <b>{{Form::label('permanent-address', 'Permanent Address')}}<br></b>
+                {{Form::text('permanent-house', null, array('class' => 'form-control','id' => 'houseno-P','placeholder' => 'House/Block/Lot No.', 'reqiured'=>'required')) }}
+                {{Form::text('permanent-st', null, array('class' => 'form-control','id' => 'street-P','placeholder' => 'Street', 'reqiured'=>'required')) }}
+                {{Form::text('permanent-subdv', null, array('class' => 'form-control','id' => 'subdivillage-P','placeholder' => 'Subdivision/Village', 'reqiured'=>'required')) }} <br>
+                {{Form::text('permanent-brgy', null, array('class' => 'form-control','id' => 'barangay-P','placeholder' => 'Barangay', 'reqiured'=>'required')) }}
+                {{Form::text('permanent-city', null, array('class' => 'form-control','id' => 'City/Municipality-P','placeholder' => 'City/Municipality', 'reqiured'=>'required')) }}
+                {{Form::text('permanent-prv', null, array('class' => 'form-control','id' => 'province-P','placeholder' => 'Province', 'reqiured'=>'required')) }}<br>
+                {{Form::number('permanent-zip', null, array('class' => 'form-control','id' => 'zipcode-P','placeholder' => 'Zip Code', 'reqiured'=>'required')) }}<br>
+
+                {{-- contact information --}}
+                <b>
+                {{Form::label('contact', 'Contact Information')}}<br>
+                </b>
+                {{Form::text('telno',null, array('class' => 'form-control', 'id' => 'tel',  'placeholder' => 'MOBILE NUMBER'))}}
+                {{Form::text('mobno', null, array('class' => 'form-control', 'id' => 'mob', 'placeholder' => 'TELEPHONE NUMBER'))}}
+                {{Form::email('email', null, array('class' => 'form-control', 'id' => 'email', 'placeholder' => 'EMAIL'))}}
+
+                <h2 id="family">II. Family Background</h2>
+                <b>{{Form::label('spouse', "Spouse's Name")}}</b><br>
+                {{Form::text('spousesn',null, array('class'=>'form-control', 'id' => 'surname-S','placeholder' => 'Surname'))}}
+                {{Form::text('spousefn',null, array('class'=>'form-control', 'id' => 'firstname-S','placeholder' => 'First Name'))}}
+                {{Form::text('spousemn',null, array('class'=>'form-control', 'id' => 'midname-S','placeholder' => 'Middle Name'))}}
+                {{Form::text('spousenmext',null, array('class'=>'form-control', 'id' => 'namext-S','placeholder' => 'Ext.'))}}<br>
+                {{Form::text('spouseocc',null, array('class'=>'form-control', 'id' => 'occupation-S','placeholder' => 'Occupation'))}}
+                {{Form::text('spouseemp',null, array('class'=>'form-control', 'id' => 'employ-S','placeholder' => 'Employer/Business Name'))}}
+                {{Form::text('spouseempadd',null, array('class'=>'form-control', 'id' => 'employadd-S','placeholder' => 'Business Address'))}}
+                {{Form::text('spousetel',null, array('class'=>'form-control', 'id' => 'telno-S','placeholder' => 'Tel. No'))}}<br>
+
+                <b>{{Form::label('father', "Father's Name")}}</b><br>
+                {{Form::text('fathersn',null, array('class'=>'form-control', 'id' => 'surname-F','placeholder' => 'Surname'))}}
+                {{Form::text('fatherfn',null, array('class'=>'form-control', 'id' => 'firstname-F','placeholder' => 'First Name'))}}
+                {{Form::text('fathermn',null, array('class'=>'form-control', 'id' => 'midname-F','placeholder' => 'Middle Name'))}}
+                {{Form::text('fatherext',null, array('class'=>'form-control', 'id' => 'namext-F','placeholder' => 'Ext.'))}}<br>
+
+                <b>{{Form::label('mother', "Mother's Name")}}</b><br>
+                {{Form::text('mothernm',null, array('class'=>'form-control', 'id' => 'surname-M','placeholder' => 'Surname'))}}
+                {{Form::text('motherfn',null, array('class'=>'form-control', 'id' => 'firstname-M','placeholder' => 'First Name'))}}
+                {{Form::text('mothermn',null, array('class'=>'form-control', 'id' => 'midname-M','placeholder' => 'Middle Name'))}}
+                {{Form::text('motherext',null, array('class'=>'form-control', 'id' => 'namext-M','placeholder' => 'Ext.'))}}<br>
+
+                <b>{{Form::label('children', "Name of Children (List all names)")}}</b><br>
+
+                <?php
+                    $children = array("child0","child1","child2","child3","child4");
+                    foreach ($children as $childno) {
+                        echo Form::text($childno, null, array('class'=> 'form-control','id'=>$childno, 'placeholder' => 'Full Name'));
+
+                        $str = "birth";
+                        $str .=$childno;
+                        echo Form::label('$str', 'Birthday: ');
+                        echo Form::date($str);
+                        echo "<br>";
+                    }
+                ?>
+
+                <h2 id='education'>III. Educational Background</h2>
+                <b>Level</b><br>
+                <b>{{Form::label('elem', 'Elementary')}}</b><br>
+                {{Form::text('elemname', null, array('class'=>'form-control','id' => 'elemname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
+                {{Form::text('elemdeg', null, array('class' => 'form-control', 'id' => 'elemdegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
+
+                <b>Pediod of Attendance</b><br>
+                {{Form::month('attendancefrom', null, array('class' => 'form-control', 'id' => 'elemattendFrom','placeholder' => 'FROM'))}}
+                {{Form::month('attendanceto', null, array('class' => 'form-control', 'id' => 'elemattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('elemunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
+                {{Form::text('yeargradelem',null,array('class' => 'form-control', 'id' => 'yearelem', 'placeholder' => 'Year Graduated'))}}<br>
+                {{Form::text('scholarshipelem',null,array('class' => 'form-control', 'id' => 'scholarelem', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
+
+                <b>Level</b><br>
+                <b>{{Form::label('hs', 'Secondary')}}</b><br>
+                {{Form::text('hsname', null, array('class'=>'form-control','id' => 'hsname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
+                {{Form::text('hsdeg', null, array('class' => 'form-control', 'id' => 'hsdegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
+
+                <b>Pediod of Attendance</b><br>
+                {{Form::month('attendancefromhs', null, array('class' => 'form-control', 'id' => 'hsattendFrom','placeholder' => 'FROM'))}}
+                {{Form::month('attendancetohs', null, array('class' => 'form-control', 'id' => 'hsattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('hsunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
+                {{Form::text('yeargradhs',null,array('class' => 'form-control', 'id' => 'yearhs', 'placeholder' => 'Year Graduated'))}}<br>
+                {{Form::text('scholarshiphs',null,array('class' => 'form-control', 'id' => 'scholarhs', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
+
+                <b>Level</b><br>
+                <b>{{Form::label('voc', 'Vocational / Trade Course')}}</b><br>
+                {{Form::text('vocname', null, array('class'=>'form-control','id' => 'vocname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
+                {{Form::text('vocdeg', null, array('class' => 'form-control', 'id' => 'vocdegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
+
+                <b>Pediod of Attendance</b><br>
+                {{Form::month('attendancefromvoc', null, array('class' => 'form-control', 'id' => 'vocattendFrom','placeholder' => 'FROM'))}}
+                {{Form::month('attendancetovoc', null, array('class' => 'form-control', 'id' => 'vocattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('vocunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
+                {{Form::text('yeargradvoc',null,array('class' => 'form-control', 'id' => 'yearvoc', 'placeholder' => 'Year Graduated'))}}<br>
+                {{Form::text('scholarshipvoc',null,array('class' => 'form-control', 'id' => 'scholarvoc', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
+
+                <b>Level</b><br>
+                <b>{{Form::label('col', 'College')}}</b><br>
+                {{Form::text('colname', null, array('class'=>'form-control','id' => 'colname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
+                {{Form::text('coldeg', null, array('class' => 'form-control', 'id' => 'coldegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
+
+                <b>Pediod of Attendance</b><br>
+                {{Form::month('attendancefromcol', null, array('class' => 'form-control', 'id' => 'colattendFrom','placeholder' => 'FROM'))}}
+                {{Form::month('attendancetocol', null, array('class' => 'form-control', 'id' => 'colattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('colunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
+                {{Form::text('yeargradcol',null,array('class' => 'form-control', 'id' => 'yearcol', 'placeholder' => 'Year Graduated'))}}<br>
+                {{Form::text('scholarshipcol',null,array('class' => 'form-control', 'id' => 'scholarcol', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
+
+                <b>Level</b><br>
+                <b>{{Form::label('grad', 'Graduate Studies')}}</b><br>
+                {{Form::text('gradname', null, array('class'=>'form-control','id' => 'gradname', 'placeholder'=>'Name of School (No Abbreviations)'))}}<br>
+                {{Form::text('graddeg', null, array('class' => 'form-control', 'id' => 'graddegree','placeholder' => 'Basic Education/Degree/Course (No Abbreviations)'))}}<br>
+
+                <b>Pediod of Attendance</b><br>
+                {{Form::month('attendancefromgrad', null, array('class' => 'form-control', 'id' => 'gradattendFrom','placeholder' => 'FROM'))}}
+                {{Form::month('attendancetograd', null, array('class' => 'form-control', 'id' => 'gradattendto','placeholder' => 'TO'))}}<br>
+                {{Form::number('gradunitLevel', null, array('class' => 'form-control', 'id' => 'unitLevelelem','placeholder' => 'Highest Unit / Level earned'))}}<br>
+                {{Form::text('yeargradgrad',null,array('class' => 'form-control', 'id' => 'yeargrad', 'placeholder' => 'Year Graduated'))}}<br>
+                {{Form::text('scholarshipgrad',null,array('class' => 'form-control', 'id' => 'scholargrad', 'placeholder' => 'Scholarship/Academic Honors Recieved'))}}<br>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+
+        {{Form::close()}}
+        <a href='sender' class="btn btn-primary">PDF</a>
+        <a href="exporter" class="btn btn-primary">Export</a>
 
 
-    {{Form::submit('NEXT PAGE')}}
-    {{Form::close()}}
 </body>
 </html>
