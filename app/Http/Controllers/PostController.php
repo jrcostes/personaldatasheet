@@ -17,7 +17,7 @@ class PostController extends Controller
         Sheet::create($request->all());
 
         return redirect('/')
-            ->with('success','Task created successfully.');
+            ->with('success','Entry Saved');
     }
     public function export()
     {

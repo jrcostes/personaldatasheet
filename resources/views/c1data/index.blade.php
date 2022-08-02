@@ -261,7 +261,17 @@
 ?>
 <html>
     <head>
-
+        @if ($message = Session::get('success'))
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                            <div class="alert alert-success alert block">
+                                <span>{{ $message }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
     </head>
     <div class="head">
         <h2 id="personal">I. Personal Information</h2>
