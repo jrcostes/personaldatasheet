@@ -12,11 +12,13 @@
 */
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SheetsController;
 use Illuminate\Support\Facades\App;
 use Knp\Snappy\Pdf;
 
-Route::resource('post','PostController');
+
 Auth::routes();
+Route::resource('sheets', 'SheetsController');
 
 Route::get('/', function () {
 
@@ -27,5 +29,16 @@ Route::get('/sender', function(){
     $pdf->loadview('c1data.index');
     return $pdf->download('c1data.index.pdf');
 });
-Route::get('exporter', 'PostController@export');
+Route::get('temp', 'PostController@index');
+Route::get('/shtuff', function(){
+    return view('c1data.homepage');
+});
+Route::get('/export', [PostController::class, 'export']);
 
+
+Route::get('/wkhtmltopdf', [PostController::class, 'print_form'])->name('print_data');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
